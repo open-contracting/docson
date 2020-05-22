@@ -20232,16 +20232,6 @@ var withType = function (schema, options, hideAny) {
     if (schema.const) {
         schema.__type = schema.const;
     }
-    if (schema.format) {
-        var formatStr = "string (format: " + schema.format + ")";
-        if (Array.isArray(schema.__type)) {
-            index = schema.__type.indexOf("string");
-            schema.__type = schema.__type.slice();
-            schema.__type.splice(index, 1, formatStr);
-        } else {
-            schema.__type = formatStr;
-        }
-    }
     if ((schema.__type == "any" || schema.__type == "object") && schema.title) {
         schema.__type = schema.title;
     }
@@ -20261,6 +20251,12 @@ var withType = function (schema, options, hideAny) {
 Handlebars.registerHelper('complex', function (schema, options) {
     if (!simpleSchema(schema) && !schema.$ref || schema.properties) {
         return withType(schema, options);
+    }
+});
+
+Handlebars.registerHelper('format', function (schema) {
+    if (schema.format) {
+        return "(format: " + schema.format + ")";
     }
 });
 

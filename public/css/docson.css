@@ -118,9 +118,7 @@
 }
 
 .docson .box-2 {
-    background: beige;
-    background: -webkit-linear-gradient(white, beige, beige, gainsboro);
-    background: -moz-linear-gradient(white, beige, beige, gainsboro);
+    background: whitesmoke;
 }
 
 .docson .box-3 {
@@ -191,15 +189,15 @@
 }
 
 .docson .type-pattern {
-    font-size: 80%;
-    color: darkolivegreen;
+    color: dimgray;
+    font-family: "Lucida Console", Monaco, monospace;
+    font-size: 90%;
 }
 
 .docson .type-enum {
     color: dimgray;
     font-family: "Lucida Console", Monaco, monospace;
     font-size: 90%;
-    padding-left: 2px;
 }
 
 .docson .type-default {

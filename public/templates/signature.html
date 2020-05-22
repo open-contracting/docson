@@ -25,6 +25,7 @@
                 <!-- {{range minLength maxLength "" "" false false ".."}} -->{{range minimum maximum "-∞" "∞" exclusiveMinimum exclusiveMaximum ";"}}
             </span>
         {{/simple}}
+        <span class="type-keyword">{{format this}}</span>
         <span class="type-keyword">{{enum this}}</span>
         {{#complex this}}
             {{#box this}}
@@ -60,6 +61,7 @@
                <!-- {{range minLength maxLength "" "" false false ".."}} -->{{range minimum maximum "-∞" "∞" exclusiveMinimum exclusiveMaximum ";"}}
             </span>
         {{/primitive}}
+        <span class="type-keyword">{{format this}}</span>
         <span class="type-keyword">{{enum this}}</span>
         {{#ref this}}
             {{#box this}}
