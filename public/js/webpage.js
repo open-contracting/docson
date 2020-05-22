@@ -20223,6 +20223,8 @@ Handlebars.registerHelper('simple', function (schema, options) {
 });
 
 var withType = function (schema, options, hideAny) {
+    var index;
+
     schema.__type = schema.type;
     if (!schema.type && !hideAny) {
         schema.__type = "any";
@@ -20233,16 +20235,24 @@ var withType = function (schema, options, hideAny) {
     if (schema.format) {
         var formatStr = "string (format: " + schema.format + ")";
         if (Array.isArray(schema.__type)) {
-            var i = schema.__type.indexOf("string");
+            index = schema.__type.indexOf("string");
             schema.__type = schema.__type.slice();
-            schema.__type.splice(i, 1, formatStr)
+            schema.__type.splice(index, 1, formatStr);
         } else {
-            schema.__type = formatStr
+            schema.__type = formatStr;
         }
     }
     if ((schema.__type == "any" || schema.__type == "object") && schema.title) {
         schema.__type = schema.title;
     }
+
+    if (Array.isArray(schema.__type)) {
+      index = schema.__type.indexOf("null");
+      if (index !== -1) {
+        schema.__type.splice(index, 1);
+      }
+    }
+
     var result = options.fn(schema);
     delete schema.__type;
     return result;
@@ -20256,7 +20266,7 @@ Handlebars.registerHelper('complex', function (schema, options) {
 
 Handlebars.registerHelper('enum', function (schema) {
     if (schema.enum) {
-        return schema.enum.length > 1 ? "enum" : "constant";
+        return "chosen from:";
     }
 });
 

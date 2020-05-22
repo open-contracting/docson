@@ -93,7 +93,6 @@
 }
 
 .docson .box-description {
-    color: dimgray;
     float: left;
     width:100%;
 }
@@ -182,8 +181,12 @@
     font-weight: bold;
 }
 
+.docson .required:after {
+  content: " *";
+  color: #880000;
+}
+
 .docson .type-keyword {
-    font-size: 80%;
     color: dimgray;
 }
 
@@ -193,7 +196,7 @@
 }
 
 .docson .type-enum {
-    color: purple;
+    color: dimgray;
     font-family: "Lucida Console", Monaco, monospace;
     font-size: 90%;
     padding-left: 2px;
@@ -209,26 +212,11 @@
     float: left;
     width:100%;
     min-width: 160px;
+    color: dimgray;
 }
 
 .docson .signature-type-any {
     font-style: italic;
-}
-
-.docson .signature-type-string {
-    color: green;
-}
-
-.docson .signature-type-number {
-    color: blue;
-}
-
-.docson .signature-type-integer {
-    color: blueviolet;
-}
-
-.docson .signature-type-boolean {
-    color: orangered;
 }
 
 .docson .signature-type-null {
@@ -284,7 +272,6 @@
 .docson .signature-description {
     padding-left: 6px;
     padding-bottom: 3px;
-    color: dimgray;
     float: left;
     width:100%;
 }
@@ -477,4 +464,3 @@
     color: #080;
     font-style: italic;
 }
-
