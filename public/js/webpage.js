@@ -20231,7 +20231,14 @@ var withType = function (schema, options, hideAny) {
         schema.__type = schema.const;
     }
     if (schema.format) {
-        schema.__type = schema.format;
+        var formatStr = "string (format: " + schema.format + ")";
+        if (Array.isArray(schema.__type)) {
+            var i = schema.__type.indexOf("string");
+            schema.__type = schema.__type.slice();
+            schema.__type.splice(i, 1, formatStr)
+        } else {
+            schema.__type = formatStr
+        }
     }
     if ((schema.__type == "any" || schema.__type == "object") && schema.title) {
         schema.__type = schema.title;
@@ -38990,7 +38997,7 @@ Renderer.prototype.link = function(href, title, text) {
   if (this.options.baseUrl && !originIndependentUrl.test(href)) {
     href = resolveUrl(this.options.baseUrl, href);
   }
-  var out = '<a href="' + href + '"';
+  var out = '<a target="_top" href="' + href + '"';
   if (title) {
     out += ' title="' + title + '"';
   }
