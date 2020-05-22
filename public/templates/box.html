@@ -60,6 +60,7 @@
         {{/sub}}
         {{#if properties}}
             {{#each properties}}
+                {{#unless this.deprecated}}
             <div class="signature">
                 <div class="signature-header">
                     <div class="property-name {{#contains ../required @key}}required{{/contains}}">{{@key}}</div>
@@ -96,6 +97,7 @@
                 {{/boxes}}
                 </div>
             </div>
+                {{/unless}}
             {{/each}}
         {{/if}}
 
