@@ -1,0 +1,20 @@
+diff --git a/docson.js b/docson.js
+index 93d7d09..b5aa888 100644
+--- a/public/docson.js
++++ b/public/docson.js
+@@ -145,7 +145,14 @@ define(["lib/jquery", "lib/handlebars", "lib/highlight", "lib/jsonpointer", "lib
+             schema.__type="any";
+         }
+         if(schema.format) {
+-            schema.__type=schema.format;
++            var formatStr = "string (format: " + schema.format + ")";
++            if (Array.isArray(schema.__type)) {
++                var i = schema.__type.indexOf("string");
++                schema.__type = schema.__type.slice();
++                schema.__type.splice(i, 1, formatStr)
++            } else {
++                schema.__type = formatStr
++            }
+         }
+         if( (schema.__type == "any" || schema.__type == "object") && schema.title) {
+             schema.__type = schema.title;

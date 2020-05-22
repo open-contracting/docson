@@ -1,0 +1,13 @@
+diff --git a/lib/marked.js b/lib/marked.js
+index da025bd..af6306c 100644
+--- a/public/lib/marked.js
++++ b/public/lib/marked.js
+@@ -844,7 +844,7 @@
+     };
+ 
+     Renderer.prototype.link = function(href, title, text) {
+-        var out = '<a href="' + href + '"';
++        var out = '<a target="_top" href="' + href + '"';
+         if (title) {
+             out += ' title="' + title + '"';
+         }
